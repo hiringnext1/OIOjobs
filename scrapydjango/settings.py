@@ -40,13 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
+    'jobopening',
+    'employer',
+    'employee',
     'scrapy_djangoitem',
     'django_filters',
     'bootstrap_pagination',
     'crispy_forms',
     'widget_tweaks',
     'tinymce',
-    'sampledjango',
+    'main',
 
 ]
 

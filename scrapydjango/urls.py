@@ -17,13 +17,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from sampledjango.views import IndexView, IndexDetailView, HomeListView, TestListView, JobsByLocation, JobsByAhm, JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories
+from main.views import IndexView, IndexDetailView, HomeListView, TestListView, JobsByLocation, JobsByAhm, \
+    JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories
+from jobopening.views import JobOpeningView, JobOpeningDetailView
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', HomeListView.as_view(), name='homepage'),
                   path('test/', TestListView.as_view(), name='test_page'),
                   path('job/', IndexView.as_view(), name='joblist'),
+                  path('jobopening/', JobOpeningView.as_view(), name='job-list'),
+                  path('jobopening/<slug>/', JobOpeningDetailView.as_view(), name='job-detail'),
                   path('jobs-by-location/', JobsByLocation.as_view(), name='jobs-by-location'),
                   path('jobs-by-categories/', JobsByCategories.as_view(), name='jobs-by-categories'),
                   path('jobs-in-ahmedabad', JobsByAhm.as_view(), name='jobs-in-ahmedabad'),
@@ -31,6 +35,7 @@ urlpatterns = [
                   path('jobs-in-bharuch', JobsByBharuch.as_view(), name='jobs-in-bharuch'),
                   path('jobs-in-surat', JobsBySurat.as_view(), name='jobs-in-surat'),
                   path('job/<slug>/', IndexDetailView.as_view(), name='detail'),
+                  path(r'employer/', include('employer.urls')),
                   # path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 
                   path(r'tinymce/', include('tinymce.urls')),

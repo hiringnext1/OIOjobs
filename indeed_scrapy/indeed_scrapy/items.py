@@ -7,7 +7,7 @@
 
 
 import scrapy
-from sampledjango.models import IndeedJobs
+from main.models import IndeedJobs
 from scrapy_djangoitem import DjangoItem
 
 

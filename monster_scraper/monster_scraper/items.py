@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from sampledjango.models import IndeedJobs
+from main.models import IndeedJobs
 from scrapy_djangoitem import DjangoItem
 
 

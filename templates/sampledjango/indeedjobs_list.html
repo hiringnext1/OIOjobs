@@ -51,6 +51,52 @@
 
                     <div class="listings-container margin-top-35">
 
+         {# Job Posting by Companies Start #}
+                {% for job in jobopening %}
+
+                        <!-- Job Listing -->
+                        <a target="_blank" href="{{ job.get_absolute_url }}" class="job-listing">
+
+                            <!-- Job Listing Details -->
+                            <div class="job-listing-details">
+                                <!-- Logo -->
+                                <div class="job-listing-company-logo">
+                                    <img src="{% static "new_theme/images/company-logo-01.png" %}" alt="">
+                                </div>
+
+                                <!-- Details -->
+                                <div class="job-listing-description">
+                                    <h4 class="job-listing-company">{{ job.company_name }} <span class="verified-badge"
+                                                                                            title="Verified Employer"
+                                                                                            data-tippy-placement="top"></span>
+                                    </h4>
+                                    <h3 class="job-listing-title">{{ job.job_title }}</h3>
+                                    <p class="job-listing-text">{{ job.job_description | striptags | truncatewords:"30"| cut:"[" | cut:"]" | cut:"*" | cut:"'" | cut:"Job Summary" | cut:"\n"| cut:"-" }}</p>
+                                </div>
+
+                                <!-- Bookmark -->
+                                <span class="bookmark-icon"></span>
+                            </div>
+
+                            <!-- Job Listing Footer -->
+                            <div class="job-listing-footer">
+                                <ul>
+                                    <li><i class="icon-material-outline-location-on"></i> {{ job.job_location }}</li>
+                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}</li>
+                                    <li>
+                                        <i class="icon-material-outline-account-balance-wallet"></i>{{ job.max_salary_budget | cut:"a month" | cut:"a year" }}
+                                    </li>
+                                    <li><i class="icon-material-outline-access-time"></i> {{ job.job_created }}</li>
+                                </ul>
+                            </div>
+                        </a>
+
+                    {% endfor %}
+
+         {# Job Posting by Companies End #}
+
+
+         {# Job Scraping Lists from Indeed #}
                     {% for job in indeed %}
 
                         <!-- Job Listing -->
