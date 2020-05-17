@@ -53,6 +53,13 @@ class IndeedSpider(Spider):
             indeedscrapyitem['company'] = response.xpath('//*[contains(@class, '
                                                          '"jobsearch-InlineCompanyRating")]/div/text()').extract()[0]
 
+        indeedscrapyitem['city'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[0]
+
+        indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
+
+        indeedscrapyitem['employment_type'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[1]
+
+
         # # Location
         # if response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract()[0] is '-':
         #     indeedscrapyitem['city'] = \
@@ -79,12 +86,13 @@ class IndeedSpider(Spider):
         #
         # # Job Description
         #
-        # indeedscrapyitem['job_description'] = response.xpath('.//*[contains(@class, '
-        #                                                      '"jobsearch-jobDescriptionText")]').extract()
+        indeedscrapyitem['job_description'] = response.xpath('.//*[contains(@class, '
+                                                             '"jobsearch-jobDescriptionText")]').extract()
         #
         # # Date Posted
         #
-        indeedscrapyitem['date_posted'] = response.xpath('//*[@class="jobsearch-JobMetadataFooter"]/text()').extract_first()
+        indeedscrapyitem['date_posted'] = response.xpath(
+            '//*[@class="jobsearch-JobMetadataFooter"]/text()').extract_first()
 
         indeedscrapyitem['job_url'] = response.url
 
@@ -95,4 +103,3 @@ def clean_job_string(job_string):
     job_string = job_string.strip()
     job_string = job_string.replace(' ', '+')
     return job_string
-

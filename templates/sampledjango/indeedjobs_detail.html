@@ -25,10 +25,10 @@
 						</div>
 					</div>
 					<div class="right-side">
-						<div class="salary-box">
-							<div class="salary-type">Salary</div>
-							<div class="salary-amount">{{object.salary | cut:"a month" | cut:"a year"}}</div>
-						</div>
+{#						<div class="salary-box">#}
+{#							<div class="salary-type">Salary</div>#}
+{#							<div class="salary-amount">{{object.salary | cut:"a month" | cut:"a year"}}</div>#}
+{#						</div>#}
 					</div>
 				</div>
 			</div>
@@ -55,66 +55,66 @@
 			<div class="single-page-section">
 				<h3 class="margin-bottom-25">Similar Jobs</h3>
 
-				<!-- Listings Container -->
-				<div class="listings-container grid-layout">
-
-						<!-- Job Listing -->
-						<a href="#" class="job-listing">
-
-							<!-- Job Listing Details -->
-							<div class="job-listing-details">
-								<!-- Logo -->
-								<div class="job-listing-company-logo">
-									<img src="images/company-logo-02.png" alt="">
-								</div>
-
-								<!-- Details -->
-								<div class="job-listing-description">
-									<h4 class="job-listing-company">Coffee</h4>
-									<h3 class="job-listing-title">Barista and Cashier</h3>
-								</div>
-							</div>
-
-							<!-- Job Listing Footer -->
-							<div class="job-listing-footer">
-								<ul>
-									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-									<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-								</ul>
-							</div>
-						</a>
-
-						<!-- Job Listing -->
-						<a href="#" class="job-listing">
-
-							<!-- Job Listing Details -->
-							<div class="job-listing-details">
-								<!-- Logo -->
-								<div class="job-listing-company-logo">
-									<img src="images/company-logo-03.png" alt="">
-								</div>
-
-								<!-- Details -->
-								<div class="job-listing-description">
-									<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-									<h3 class="job-listing-title">Restaurant Manager</h3>
-								</div>
-							</div>
-
-							<!-- Job Listing Footer -->
-							<div class="job-listing-footer">
-								<ul>
-									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-									<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-								</ul>
-							</div>
-						</a>
-					</div>
-					<!-- Listings Container / End -->
+{#				<!-- Listings Container -->#}
+{#				<div class="listings-container grid-layout">#}
+{##}
+{#						<!-- Job Listing -->#}
+{#						<a href="#" class="job-listing">#}
+{##}
+{#							<!-- Job Listing Details -->#}
+{#							<div class="job-listing-details">#}
+{#								<!-- Logo -->#}
+{#								<div class="job-listing-company-logo">#}
+{#									<img src="images/company-logo-02.png" alt="">#}
+{#								</div>#}
+{##}
+{#								<!-- Details -->#}
+{#								<div class="job-listing-description">#}
+{#									<h4 class="job-listing-company">Coffee</h4>#}
+{#									<h3 class="job-listing-title">Barista and Cashier</h3>#}
+{#								</div>#}
+{#							</div>#}
+{##}
+{#							<!-- Job Listing Footer -->#}
+{#							<div class="job-listing-footer">#}
+{#								<ul>#}
+{#									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>#}
+{#									<li><i class="icon-material-outline-business-center"></i> Full Time</li>#}
+{#									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>#}
+{#									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>#}
+{#								</ul>#}
+{#							</div>#}
+{#						</a>#}
+{##}
+{#						<!-- Job Listing -->#}
+{#						<a href="#" class="job-listing">#}
+{##}
+{#							<!-- Job Listing Details -->#}
+{#							<div class="job-listing-details">#}
+{#								<!-- Logo -->#}
+{#								<div class="job-listing-company-logo">#}
+{#									<img src="{% static 'images/company-logo-03.png' %}" alt="">#}
+{#								</div>#}
+{##}
+{#								<!-- Details -->#}
+{#								<div class="job-listing-description">#}
+{#									<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>#}
+{#									<h3 class="job-listing-title">Restaurant Manager</h3>#}
+{#								</div>#}
+{#							</div>#}
+{##}
+{#							<!-- Job Listing Footer -->#}
+{#							<div class="job-listing-footer">#}
+{#								<ul>#}
+{#									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>#}
+{#									<li><i class="icon-material-outline-business-center"></i> Full Time</li>#}
+{#									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>#}
+{#									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>#}
+{#								</ul>#}
+{#							</div>#}
+{#						</a>#}
+{#					</div>#}
+{#					<!-- Listings Container / End -->#}
 
 				</div>
 		</div>
@@ -135,22 +135,22 @@
 							<ul>
 								<li>
 									<i class="icon-material-outline-location-on"></i>
-									<span>Location</span>
+{#									<span>Location</span>#}
 									<h5>{{ object.city }}</h5>
 								</li>
 								<li>
 									<i class="icon-material-outline-business-center"></i>
-									<span>Job Type</span>
-									<h5>Full Time</h5>
+{#									<span>Job Type</span>#}
+									<h5>{{ object.employment_type }}</h5>
 								</li>
 								<li>
-									<i class="icon-material-outline-local-atm"></i>
-									<span>Salary</span>
+									<i class="icon-material-outline-business"></i>
+{#									<span>Salary</span>#}
 									<h5>{{ object.salary}}</h5>
 								</li>
 								<li>
 									<i class="icon-material-outline-access-time"></i>
-									<span>Date Posted</span>
+{#									<span>Date Posted</span>#}
 									<h5>{{ object.date_posted }}</h5>
 								</li>
 							</ul>

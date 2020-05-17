@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
 from .models import JobOpening
 # Create your views here.
 from django.views.generic import ListView, DetailView
+
+from django.views.generic import CreateView
 
 
 class JobOpeningView(ListView):
@@ -18,3 +21,4 @@ class JobOpeningView(ListView):
 class JobOpeningDetailView(DetailView):
     model = JobOpening
     template_name = 'sampledjango/jobopening_detail.html'
+

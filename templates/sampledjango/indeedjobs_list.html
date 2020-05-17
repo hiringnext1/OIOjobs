@@ -127,7 +127,7 @@
                             <div class="job-listing-footer">
                                 <ul>
                                     <li><i class="icon-material-outline-location-on"></i> {{ job.city }}</li>
-                                    <li><i class="icon-material-outline-business-center"></i> Full Time</li>
+                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}</li>
                                     <li>
                                         <i class="icon-material-outline-account-balance-wallet"></i>{{ job.salary | cut:"a month" | cut:"a year" }}
                                     </li>
