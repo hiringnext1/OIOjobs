@@ -65,7 +65,7 @@
 
                                 <!-- Details -->
                                 <div class="job-listing-description">
-                                    <h4 class="job-listing-company">{{ job.company_name }} <span class="verified-badge"
+                                    <h4 class="job-listing-company">{{ job.company_name| safe | cut:"[" | cut:"]"  }} <span class="verified-badge"
                                                                                             title="Verified Employer"
                                                                                             data-tippy-placement="top"></span>
                                     </h4>

@@ -14,7 +14,7 @@
 					<div class="left-side">
 						<div class="header-image"><a href="#"><img src="{% static "new_theme/images/company-logo-03a.png" %}" alt=""></a></div>
 						<div class="header-details">
-							<h3>{{ object.job_title}}</h3>
+							<h3>{{ object.job_title | safe | cut:"[" | cut:"]" | cut:"'" }}</h3>
 							<h5>About the Employer</h5>
 							<ul>
 								<li><a href="#"><i class="icon-material-outline-business"></i> {{object.company_name}}</a></li>

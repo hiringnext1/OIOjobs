@@ -89,26 +89,26 @@
                     <div class="categories-container">
 
                         <!-- Category Box -->
-                        <a href="jobs-grid-layout-full-page.html" class="category-box">
+                        <a href="{% url 'jobs-by-sales' %}" class="category-box">
                             <div class="category-box-icon">
                                 <i class="icon-line-awesome-file-code-o"></i>
                             </div>
-                            <div class="category-box-counter">612</div>
+                            <div class="category-box-counter">{{ jobs_by_sales.count }}</div>
                             <div class="category-box-content">
-                                <h3>Web & Software Dev</h3>
+                                <h3>Sales / Marketing</h3>
                                 <p>Software Engineer, Web / Mobile Developer & More</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-full-page-map.html" class="category-box">
+                        <a href="{% url 'jobs-by-back-office' %}" class="category-box">
                             <div class="category-box-icon">
                                 <i class="icon-line-awesome-cloud-upload"></i>
                             </div>
-                            <div class="category-box-counter">113</div>
+                            <div class="category-box-counter">{{ jobs_by_backoffice.count }}</div>
                             <div class="category-box-content">
-                                <h3>Data Science & Analitycs</h3>
-                                <p>Data Specialist / Scientist, Data Analyst & More</p>
+                                <h3>Back Office </h3>
+                                <p>Back Office/ Front Office/ Front Desk / Admin </p>
                             </div>
                         </a>
 

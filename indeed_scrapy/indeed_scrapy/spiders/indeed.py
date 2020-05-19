@@ -46,19 +46,49 @@ class IndeedSpider(Spider):
             '//h3[contains(@class, "JobInfoHeader-title")]/text()').extract_first()
 
         # Company
-        if response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract()[0] is '-':
-            indeedscrapyitem['company'] = response.xpath('//*[contains(@class, '
-                                                         '"jobsearch-InlineCompanyRating")]/div/a/text()').extract()[0]
+        if response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]').extract():
+            if response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract():
+                indeedscrapyitem['company'] = response.xpath(
+                    '//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract()
+
+            elif response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/a/text()').extract():
+                indeedscrapyitem['company'] = response.xpath(
+                    '//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/a/text()').extract()
+
         else:
-            indeedscrapyitem['company'] = response.xpath('//*[contains(@class, '
-                                                         '"jobsearch-InlineCompanyRating")]/div/text()').extract()[0]
+            indeedscrapyitem['company'] = 'Private Client'
 
-        indeedscrapyitem['city'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[0]
+        indeedscrapyitem['city'] = \
+            response.xpath(
+                '//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract_first()
 
-        indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
+        indeedscrapyitem['employment_type'] = \
+            response.xpath(
+                '//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[1]
 
-        indeedscrapyitem['employment_type'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[1]
+        if response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]').extract():
+            indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
 
+        else:
+
+            indeedscrapyitem['salary'] = response.xpath(
+                    '//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
+
+
+
+        # indeedscrapyitem['employment_type'] = \
+        #     response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[1]
+        #
+        # if response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract():
+        #     indeedscrapyitem['salary'] = \
+        #         response.xpath(
+        #             '//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
+        #
+        # else:
+        #     indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[3]
+        #
+        #
+        #
 
         # # Location
         # if response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract()[0] is '-':
@@ -73,21 +103,22 @@ class IndeedSpider(Spider):
         #         response.xpath('//*[contains(@class, "jobsearch-InlineCompanyRating")]/div/text()').extract()[0]
 
         # # Salary
+
+        # indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-itemWithIcon")]/span/text()').extract()[2]
         # if response.xpath(
         #         '//*[contains(@class, "jobsearch-JobMetadataHeader-item")]/span/text()').extract_first() == \
         #         indeedscrapyitem['city']:
         #
-        #     indeedscrapyitem['salary'] = 'Negotiable'
+        #     indeedscrapyitem['salary'] = response.xpath('//*[contains(@class, "jobsearch-JobMetadataHeader-item")]/span/text()').extract()[1]
         #
         # else:
         #
-        #     indeedscrapyitem['salary'] = response.xpath(
-        #         '//*[contains(@class, "jobsearch-JobMetadataHeader-item")]/span/text()').extract_first()
-        #
+        #     indeedscrapyitem['salary'] = 'Negotiable'
+
         # # Job Description
         #
-        indeedscrapyitem['job_description'] = response.xpath('.//*[contains(@class, '
-                                                             '"jobsearch-jobDescriptionText")]').extract()
+        indeedscrapyitem['job_description'] = response.xpath(
+            './/*[contains(@class, "jobsearch-jobDescriptionText")]').extract()
         #
         # # Date Posted
         #
@@ -103,3 +134,5 @@ def clean_job_string(job_string):
     job_string = job_string.strip()
     job_string = job_string.replace(' ', '+')
     return job_string
+
+# response.xpath('//*[contains(@class, "icl-u-lg-mr--sm icl-u-xs-mr--xs")]/text()').extract()

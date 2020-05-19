@@ -1,7 +1,17 @@
+from django.db.models import Q
 from django.template.defaultfilters import slugify
 from djongo import models
 from tinymce.models import HTMLField
 # Create your models here.
+
+
+class IndeedCategoriesManager(models.Manager):
+
+    def get_queryset_sales(self):
+        return super().get_queryset().filter(Q(title__icontains='Sales') | Q(title__icontains='Marketing'))
+
+    def get_queryset_back_office(self):
+        return super().get_queryset().filter(Q(title__icontains='Back Office') | Q(title__icontains='Admin'))
 
 
 class IndeedJobsManager(models.Manager):
@@ -46,6 +56,7 @@ class IndeedJobs(models.Model):
 
     objects = models.Manager()
     job_objects = IndeedJobsManager()
+    categories_objects = IndeedCategoriesManager()
 
     class Meta:
         ordering = ["-id"]

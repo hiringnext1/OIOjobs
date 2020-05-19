@@ -4,6 +4,7 @@ from .filters import JobFilter
 from .models import IndeedJobs
 from jobopening.models import JobOpening
 
+
 # Create your views here.
 
 class HomeListView(FilterView):
@@ -25,6 +26,8 @@ class HomeListView(FilterView):
             'jobs_vadodara': IndeedJobs.job_objects.get_queryset_vadodara().all(),
             'jobs_bharuch': IndeedJobs.job_objects.get_queryset_bharuch().all(),
             'jobs_surat': IndeedJobs.job_objects.get_queryset_surat().all(),
+            'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
+            'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
 
         }
         )
@@ -75,7 +78,7 @@ class TestListView(FilterView):
 
 class JobsByCategories(ListView):
     model = IndeedJobs
-    template_name = 'jobs_by_categories/jobs-by-categories.html'
+    template_name = 'jobs_by_categories/jobs-by-categories-sales.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(JobsByCategories, self).get_context_data()
@@ -149,6 +152,34 @@ class JobsBySurat(ListView):
         context = super(JobsBySurat, self).get_context_data()
         context.update({
             'jobs_surat': IndeedJobs.job_objects.get_queryset_surat().all(),
+        })
+
+        return context
+
+
+class JobsBySales(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-sales.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsBySales, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
+        })
+
+        return context
+
+
+class JobsByBackOffice(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-back-office.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByBackOffice, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
         })
 
         return context
