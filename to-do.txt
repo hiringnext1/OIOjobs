@@ -1,4 +1,24 @@
-Home Page:
+On Main Page:
+
+Improve & Change Job Posted Date to Automatic.
+
+Develop Logo
+Add All Categories
+Improve Browse All Jobs Categories
+Improve All Jobs by Locations
+Improve & Active all links on Footer.
+Activate Social Media Pages Links.
+
+
+On Search Jobs:
+
+Improve Job Search Sidebar
+Improve Pagination
+Active Jobs () Count (Total Jobs)
+
+
+
+HomePage:
 
 1.       Add Jobs by Location - Done
 

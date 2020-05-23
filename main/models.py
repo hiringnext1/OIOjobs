@@ -2,16 +2,25 @@ from django.db.models import Q
 from django.template.defaultfilters import slugify
 from djongo import models
 from tinymce.models import HTMLField
+
+
 # Create your models here.
 
 
 class IndeedCategoriesManager(models.Manager):
 
     def get_queryset_sales(self):
-        return super().get_queryset().filter(Q(title__icontains='Sales') | Q(title__icontains='Marketing'))
+        return super().get_queryset().filter(
+            Q(title__icontains='Sales') | Q(title__icontains='Marketing') | Q(
+                title__icontains='Business Development') | Q(title__icontains='BDE') | Q(title__icontains='BDM'))
 
     def get_queryset_back_office(self):
-        return super().get_queryset().filter(Q(title__icontains='Back Office') | Q(title__icontains='Admin'))
+        return super().get_queryset().filter(
+            Q(title__icontains='Back Office') | Q(title__icontains='Admin') | Q(title__icontains='Front Office'))
+
+    def get_queryset_purchase_store(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='Purchase') | Q(title__icontains='Store') | Q(title__icontains='Supply Chain') | Q(title__icontains='Material Management'))
 
 
 class IndeedJobsManager(models.Manager):
@@ -53,6 +62,7 @@ class IndeedJobs(models.Model):
     date_posted = models.CharField(max_length=200, null=True, blank=True)
     job_url = models.URLField(max_length=1000, unique=True, null=True, blank=True)
     pub_date = models.DateTimeField(null=True, auto_created=True, auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_created=True)
 
     objects = models.Manager()
     job_objects = IndeedJobsManager()
@@ -81,3 +91,5 @@ class IndeedJobs(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('detail', args=[str(self.slug, )])
+
+

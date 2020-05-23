@@ -3,6 +3,8 @@ from django_filters.views import FilterView
 from .filters import JobFilter
 from .models import IndeedJobs
 from jobopening.models import JobOpening
+from django.core.paginator import Paginator
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -28,6 +30,7 @@ class HomeListView(FilterView):
             'jobs_surat': IndeedJobs.job_objects.get_queryset_surat().all(),
             'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
             'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
+            'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
 
         }
         )
@@ -78,10 +81,15 @@ class TestListView(FilterView):
 
 class JobsByCategories(ListView):
     model = IndeedJobs
-    template_name = 'jobs_by_categories/jobs-by-categories-sales.html'
+    template_name = 'jobs_by_categories/jobs-by-categories.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(JobsByCategories, self).get_context_data()
+        context.update({
+            'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
+            'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
+            'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
+        })
         return context
 
 
@@ -160,7 +168,8 @@ class JobsBySurat(ListView):
 class JobsBySales(ListView):
     model = IndeedJobs
     template_name = 'jobs_by_categories/jobs-by-categories-sales.html'
-    paginate_by = 20
+    context_object_name = 'jobs_by_sales'
+    paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(JobsBySales, self).get_context_data(**kwargs)
@@ -180,6 +189,20 @@ class JobsByBackOffice(ListView):
         context = super(JobsByBackOffice, self).get_context_data(**kwargs)
         context.update({
             'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
+        })
+
+        return context
+
+
+class JobsByPurchaseStore(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-purchase-store.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByPurchaseStore, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
         })
 
         return context

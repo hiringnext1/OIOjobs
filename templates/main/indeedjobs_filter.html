@@ -96,7 +96,7 @@
                             <div class="category-box-counter">{{ jobs_by_sales.count }}</div>
                             <div class="category-box-content">
                                 <h3>Sales / Marketing</h3>
-                                <p>Software Engineer, Web / Mobile Developer & More</p>
+                                <p>Sales, Marketing, Business Development</p>
                             </div>
                         </a>
 
@@ -113,14 +113,14 @@
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-full-page-map.html" class="category-box">
+                        <a href="{% url 'jobs-by-purchase-store' %}" class="category-box">
                             <div class="category-box-icon">
                                 <i class="icon-line-awesome-suitcase"></i>
                             </div>
-                            <div class="category-box-counter">186</div>
+                            <div class="category-box-counter">{{ jobs_by_purchase_store.count }}</div>
                             <div class="category-box-content">
-                                <h3>Accounting & Consulting</h3>
-                                <p>Auditor, Accountant, Fnancial Analyst & More</p>
+                                <h3>Purchase / Store / SCM</h3>
+                                <p>Purchase, Store Management, Material Management</p>
                             </div>
                         </a>
 
@@ -220,11 +220,11 @@
 
                                     <!-- Details -->
                                     <div class="job-listing-description">
-                                        <h4 class="job-listing-company">{{ job.company }} <span class="verified-badge"
+                                        <h4 class="job-listing-company">{{ job.company | safe | cut:"[" | cut:"]" | cut:"'" }} <span class="verified-badge"
                                                                                       title="Verified Employer"
                                                                                       data-tippy-placement="top"></span>
                                         </h4>
-                                        <h3 class="job-listing-title">{{ job.title }}</h3>
+                                        <h3 class="job-listing-title">{{ job.title | safe | cut:"[" | cut:"]" }}</h3>
                                     </div>
                                 </div>
 

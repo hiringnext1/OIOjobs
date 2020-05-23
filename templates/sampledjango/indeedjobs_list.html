@@ -46,13 +46,13 @@
             </div>
             <div class="col-xl-9 col-lg-8 content-left-offset">
 
-            <h3 class="job-listing-title">Active Jobs </h3>
+                <h3 class="job-listing-title">Active Jobs </h3>
 
 
-                    <div class="listings-container margin-top-35">
+                <div class="listings-container margin-top-35">
 
-         {# Job Posting by Companies Start #}
-                {% for job in jobopening %}
+                    {# Job Posting by Companies Start #}
+                    {% for job in jobopening %}
 
                         <!-- Job Listing -->
                         <a target="_blank" href="{{ job.get_absolute_url }}" class="job-listing">
@@ -67,8 +67,8 @@
                                 <!-- Details -->
                                 <div class="job-listing-description">
                                     <h4 class="job-listing-company">{{ job.company_name }} <span class="verified-badge"
-                                                                                            title="Verified Employer"
-                                                                                            data-tippy-placement="top"></span>
+                                                                                                 title="Verified Employer"
+                                                                                                 data-tippy-placement="top"></span>
                                     </h4>
                                     <h3 class="job-listing-title">{{ job.job_title }}</h3>
                                     <p class="job-listing-text">{{ job.job_description | striptags | truncatewords:"30"| cut:"[" | cut:"]" | cut:"*" | cut:"'" | cut:"Job Summary" | cut:"\n"| cut:"-" }}</p>
@@ -82,7 +82,8 @@
                             <div class="job-listing-footer">
                                 <ul>
                                     <li><i class="icon-material-outline-location-on"></i> {{ job.job_location }}</li>
-                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}</li>
+                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}
+                                    </li>
                                     <li>
                                         <i class="icon-material-outline-account-balance-wallet"></i>{{ job.max_salary_budget | cut:"a month" | cut:"a year" }}
                                     </li>
@@ -93,10 +94,10 @@
 
                     {% endfor %}
 
-         {# Job Posting by Companies End #}
+                    {# Job Posting by Companies End #}
 
 
-         {# Job Scraping Lists from Indeed #}
+                    {# Job Scraping Lists from Indeed #}
                     {% for job in indeed %}
 
                         <!-- Job Listing -->
@@ -111,9 +112,10 @@
 
                                 <!-- Details -->
                                 <div class="job-listing-description">
-                                    <h4 class="job-listing-company">{{ job.company | safe | cut:"[" | cut:"]" | cut:"'" }} <span class="verified-badge"
-                                                                                            title="Verified Employer"
-                                                                                            data-tippy-placement="top"></span>
+                                    <h4 class="job-listing-company">{{ job.company | safe | cut:"[" | cut:"]" | cut:"'" }}
+                                        <span class="verified-badge"
+                                              title="Verified Employer"
+                                              data-tippy-placement="top"></span>
                                     </h4>
                                     <h3 class="job-listing-title">{{ job.title }}</h3>
                                     <p class="job-listing-text">{{ job.job_description | striptags | truncatewords:"30"| cut:"[" | cut:"]" | cut:"*" | cut:"'" | cut:"Job Summary" | cut:"\n"| cut:"-" }}</p>
@@ -127,11 +129,14 @@
                             <div class="job-listing-footer">
                                 <ul>
                                     <li><i class="icon-material-outline-location-on"></i> {{ job.city }}</li>
-                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}</li>
+                                    <li><i class="icon-material-outline-business-center"></i> {{ job.employment_type }}
+                                    </li>
                                     <li>
                                         <i class="icon-material-outline-account-balance-wallet"></i>{{ job.salary | cut:"a month" | cut:"a year" }}
                                     </li>
-                                    <li><i class="icon-material-outline-access-time"></i> {{ job.date_posted }}</li>
+                                    <li>
+                                        <i class="icon-material-outline-access-time"></i> {{ job.date_posted | safe | cut:"-" }}
+                                    </li>
                                 </ul>
                             </div>
                         </a>
@@ -139,23 +144,23 @@
                     {% endfor %}
 
 
-                    <!-- Pagination -->
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Pagination -->
-                            <div class="pagination-container margin-top-30 margin-bottom-60">
-                                <nav class="pagination">
-                                    <ul>
-                                        <li>
-                                            {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pagination / End -->
+                    {#                    <!-- Pagination -->#}
+                                        <div class="clearfix"></div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- Pagination -->
+                                                <div class="pagination-container margin-top-30 margin-bottom-60">
+                                                    <nav class="pagination">
+                                                        <ul>
+                                                            <li>
+                                                                {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                    {#                    <!-- Pagination / End -->#}
 
                 </div>
 

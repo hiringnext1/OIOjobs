@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from main.views import IndexView, IndexDetailView, HomeListView, TestListView, JobsByLocation, JobsByAhm, \
-    JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories, JobsBySales, JobsByBackOffice
+    JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories, JobsBySales, JobsByBackOffice, JobsByPurchaseStore
 from jobopening.views import JobOpeningView, JobOpeningDetailView
 
 urlpatterns = [
@@ -39,6 +39,7 @@ urlpatterns = [
 
                   path('jobs-by-sales', JobsBySales.as_view(), name='jobs-by-sales'),
                   path('jobs-by-back-office', JobsByBackOffice.as_view(), name='jobs-by-back-office'),
+                  path('jobs-by-purchase-store', JobsByPurchaseStore.as_view(), name='jobs-by-purchase-store'),
 
                   path(r'employer/', include('employer.urls')),
 
