@@ -18,7 +18,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from main.views import IndexView, IndexDetailView, HomeListView, TestListView, JobsByLocation, JobsByAhm, \
-    JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories, JobsBySales, JobsByBackOffice, JobsByPurchaseStore
+    JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories, JobsBySales, JobsByBackOffice, JobsByPurchaseStore, \
+    JobsByAccountFinance, JobsBySoftwareHardware, JobsByGraphicDigital, JobsByBPOITES, JobsByEngineering
 from jobopening.views import JobOpeningView, JobOpeningDetailView
 
 urlpatterns = [
@@ -40,6 +41,11 @@ urlpatterns = [
                   path('jobs-by-sales', JobsBySales.as_view(), name='jobs-by-sales'),
                   path('jobs-by-back-office', JobsByBackOffice.as_view(), name='jobs-by-back-office'),
                   path('jobs-by-purchase-store', JobsByPurchaseStore.as_view(), name='jobs-by-purchase-store'),
+                  path('jobs-by-account-finance', JobsByAccountFinance.as_view(), name='jobs-by-account-finance'),
+                  path('jobs-by-software-hardware', JobsBySoftwareHardware.as_view(), name='jobs-by-software-hardware'),
+                  path('jobs-by-graphic-digital', JobsByGraphicDigital.as_view(), name='jobs-by-graphic-digital'),
+                  path('jobs-by-bpo', JobsByBPOITES.as_view(), name='jobs-by-bpo'),
+                  path('jobs-by-engineering', JobsByEngineering.as_view(), name='jobs-by-engg'),
 
                   path(r'employer/', include('employer.urls')),
 

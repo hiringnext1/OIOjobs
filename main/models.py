@@ -20,7 +20,38 @@ class IndeedCategoriesManager(models.Manager):
 
     def get_queryset_purchase_store(self):
         return super().get_queryset().filter(
-            Q(title__icontains='Purchase') | Q(title__icontains='Store') | Q(title__icontains='Supply Chain') | Q(title__icontains='Material Management'))
+            Q(title__icontains='Purchase') | Q(title__icontains='Store') | Q(title__icontains='Supply Chain') | Q(
+                title__icontains='Material Management'))
+
+    def get_queryset_account_finance(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='account') | Q(title__icontains='finance') | Q(title__icontains='Tally') | Q(
+                title__icontains='accountant'))
+
+    def get_queryset_software_hardware(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='Developer') | Q(title__icontains='Software') | Q(title__icontains='Hardware') | Q(
+                title__icontains='Network'))
+
+    def get_queryset_graphic_digital(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='Web') | Q(title__icontains='Graphic') | Q(title__icontains='SEO') | Q(
+                title__icontains='Digital Marketing') | Q(title__icontains='Social Media') | Q(
+                title__icontains='PhotoShop') | Q(title__icontains='Coral Draw') | Q(title__icontains='Illustrator'))
+
+    def get_queryset_bpo_ites(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='bpo') | Q(title__icontains='customer care') | Q(title__icontains='tele caller') | Q(
+                title__icontains='Customer care') | Q(title__icontains='call center') | Q(
+                title__icontains='International call center') | Q(title__icontains='non voice') | Q(
+                title__icontains='voice'))
+
+    def get_queryset_engineering_manufacturing(self):
+        return super().get_queryset().filter(
+            Q(title__icontains='Production') | Q(title__icontains='Maintenance')  | Q(
+                title__icontains='CNC') | Q(title__icontains='Packaging') | Q(
+                title__icontains='Shift') | Q(title__icontains='Manufacturing') | Q(
+                title__icontains='Engineering'))
 
 
 class IndeedJobsManager(models.Manager):
@@ -91,5 +122,3 @@ class IndeedJobs(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('detail', args=[str(self.slug, )])
-
-

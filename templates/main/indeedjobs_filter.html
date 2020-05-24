@@ -91,11 +91,11 @@
                         <!-- Category Box -->
                         <a href="{% url 'jobs-by-sales' %}" class="category-box">
                             <div class="category-box-icon">
-                                <i class="icon-line-awesome-file-code-o"></i>
+                                <i class="icon-line-awesome-pie-chart"></i>
                             </div>
                             <div class="category-box-counter">{{ jobs_by_sales.count }}</div>
                             <div class="category-box-content">
-                                <h3>Sales / Marketing</h3>
+                                <h3>Sales & Marketing</h3>
                                 <p>Sales, Marketing, Business Development</p>
                             </div>
                         </a>
@@ -119,68 +119,68 @@
                             </div>
                             <div class="category-box-counter">{{ jobs_by_purchase_store.count }}</div>
                             <div class="category-box-content">
-                                <h3>Purchase / Store / SCM</h3>
+                                <h3>Purchase & Store </h3>
                                 <p>Purchase, Store Management, Material Management</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-1.html" class="category-box">
+                        <a href="{% url 'jobs-by-account-finance' %}" class="category-box">
                             <div class="category-box-icon">
                                 <i class="icon-line-awesome-pencil"></i>
                             </div>
-                            <div class="category-box-counter">298</div>
+                            <div class="category-box-counter">{{ jobs_by_account_finance.count }}</div>
                             <div class="category-box-content">
-                                <h3>Writing & Translations</h3>
-                                <p>Copywriter, Creative Writer, Translator & More</p>
+                                <h3>Account & Finance</h3>
+                                <p>Account, Finance, Tally, Inter CA & More</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-2.html" class="category-box">
+                        <a href="{% url 'jobs-by-software-hardware' %}" class="category-box">
                             <div class="category-box-icon">
-                                <i class="icon-line-awesome-pie-chart"></i>
+                                <i class="icon-line-awesome-code"></i>
                             </div>
-                            <div class="category-box-counter">549</div>
+                            <div class="category-box-counter">{{ jobs_by_software_hardware.count }}</div>
                             <div class="category-box-content">
-                                <h3>Sales & Marketing</h3>
-                                <p>Brand Manager, Marketing Coordinator & More</p>
+                                <h3>Software & Hardware</h3>
+                                <p>Software, Developer, Web Designer, Hardware, Networking & More</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-1.html" class="category-box">
+                        <a href="{% url 'jobs-by-graphic-digital' %}" class="category-box">
                             <div class="category-box-icon">
                                 <i class="icon-line-awesome-image"></i>
                             </div>
-                            <div class="category-box-counter">873</div>
+                            <div class="category-box-counter">{{ jobs_by_graphic_digital.count }}</div>
                             <div class="category-box-content">
-                                <h3>Graphics & Design</h3>
-                                <p>Creative Director, Web Designer & More</p>
+                                <h3>Graphics & Digital Marketing</h3>
+                                <p>Graphic Designer, Web Designer, Digital Marketing, SEO & More</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-list-layout-2.html" class="category-box">
+                        <a href="{% url 'jobs-by-bpo' %}" class="category-box">
                             <div class="category-box-icon">
-                                <i class="icon-line-awesome-bullhorn"></i>
+                                <i class="icon-line-awesome-phone"></i>
                             </div>
-                            <div class="category-box-counter">125</div>
+                            <div class="category-box-counter">{{ jobs_by_bpo_ites.count }}</div>
                             <div class="category-box-content">
-                                <h3>Digital Marketing</h3>
-                                <p>Darketing Analyst, Social Profile Admin & More</p>
+                                <h3>BPO & ITES</h3>
+                                <p>BPO, Customer Service, Tele Caller, Customer Care & More</p>
                             </div>
                         </a>
 
                         <!-- Category Box -->
-                        <a href="jobs-grid-layout-full-page.html" class="category-box">
+                        <a href="{% url 'jobs-by-engg' %}" class="category-box">
                             <div class="category-box-icon">
-                                <i class="icon-line-awesome-graduation-cap"></i>
+                                <i class="icon-line-awesome-industry"></i>
                             </div>
-                            <div class="category-box-counter">445</div>
+                            <div class="category-box-counter">{{ jobs_by_engg.count }}</div>
                             <div class="category-box-content">
-                                <h3>Education & Training</h3>
-                                <p>Advisor, Coach, Education Coordinator & More</p>
+                                <h3>Engineering & Manufacturing</h3>
+                                <p>Production, Maintenance, Utilities, Packaging, Service & More </p>
                             </div>
                         </a>
 

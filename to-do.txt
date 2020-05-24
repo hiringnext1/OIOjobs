@@ -1,6 +1,6 @@
 On Main Page:
 
-Improve & Change Job Posted Date to Automatic.
+Improve & Change Job Posted Date to Automatic. > Done
 
 Develop Logo
 Add All Categories
@@ -8,6 +8,7 @@ Improve Browse All Jobs Categories
 Improve All Jobs by Locations
 Improve & Active all links on Footer.
 Activate Social Media Pages Links.
+Add similar jobs
 
 
 On Search Jobs:

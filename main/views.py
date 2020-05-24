@@ -31,6 +31,11 @@ class HomeListView(FilterView):
             'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
             'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
             'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
+            'jobs_by_account_finance': IndeedJobs.categories_objects.get_queryset_account_finance().all(),
+            'jobs_by_software_hardware': IndeedJobs.categories_objects.get_queryset_software_hardware().all(),
+            'jobs_by_graphic_digital': IndeedJobs.categories_objects.get_queryset_graphic_digital().all(),
+            'jobs_by_bpo_ites': IndeedJobs.categories_objects.get_queryset_bpo_ites().all(),
+            'jobs_by_engg': IndeedJobs.categories_objects.get_queryset_engineering_manufacturing().all(),
 
         }
         )
@@ -59,6 +64,14 @@ class IndexView(FilterView):
 class IndexDetailView(DetailView):
     model = IndeedJobs
     template_name = 'sampledjango/indeedjobs_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexDetailView, self).get_context_data()
+        context.update({
+
+        })
+
+        return context
 
 
 class TestListView(FilterView):
@@ -89,6 +102,11 @@ class JobsByCategories(ListView):
             'jobs_by_sales': IndeedJobs.categories_objects.get_queryset_sales().all(),
             'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
             'jobs_by_backoffice': IndeedJobs.categories_objects.get_queryset_back_office().all(),
+            'jobs_by_account_finance': IndeedJobs.categories_objects.get_queryset_account_finance().all(),
+            'jobs_by_software_hardware': IndeedJobs.categories_objects.get_queryset_software_hardware().all(),
+            'jobs_by_graphic_digital': IndeedJobs.categories_objects.get_queryset_graphic_digital().all(),
+            'jobs_by_bpo_ites': IndeedJobs.categories_objects.get_queryset_bpo_ites().all(),
+            'jobs_by_engg': IndeedJobs.categories_objects.get_queryset_engineering_manufacturing().all(),
         })
         return context
 
@@ -205,4 +223,70 @@ class JobsByPurchaseStore(ListView):
             'jobs_by_purchase_store': IndeedJobs.categories_objects.get_queryset_purchase_store().all(),
         })
 
+        return context
+
+
+class JobsByAccountFinance(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-account-finance.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByAccountFinance, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_account_finance': IndeedJobs.categories_objects.get_queryset_account_finance().all(),
+        })
+
+        return context
+
+
+class JobsBySoftwareHardware(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-software-hardware.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsBySoftwareHardware, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_software_hardware': IndeedJobs.categories_objects.get_queryset_software_hardware().all(),
+        })
+        return context
+
+
+class JobsByGraphicDigital(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-graphic-digital.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByGraphicDigital, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_graphic_digital': IndeedJobs.categories_objects.get_queryset_graphic_digital().all(),
+        })
+        return context
+
+
+class JobsByBPOITES(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-bpo-ites.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByBPOITES, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_bpo_ites': IndeedJobs.categories_objects.get_queryset_bpo_ites().all(),
+        })
+        return context
+
+
+class JobsByEngineering(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_categories/jobs-by-categories-engineering.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByEngineering, self).get_context_data(**kwargs)
+        context.update({
+            'jobs_by_engg': IndeedJobs.categories_objects.get_queryset_engineering_manufacturing().all(),
+        })
         return context
