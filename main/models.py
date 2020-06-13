@@ -37,7 +37,7 @@ class IndeedCategoriesManager(models.Manager):
         return super().get_queryset().filter(
             Q(title__icontains='Web') | Q(title__icontains='Graphic') | Q(title__icontains='SEO') | Q(
                 title__icontains='Digital Marketing') | Q(title__icontains='Social Media') | Q(
-                title__icontains='PhotoShop') | Q(title__icontains='Coral Draw') | Q(title__icontains='Illustrator'))
+                title__icontains='PhotoShop') | Q(title__icontains='Coral Draw') | Q(title__icontains='Illustrator') | Q(title__icontains='content'))
 
     def get_queryset_bpo_ites(self):
         return super().get_queryset().filter(
@@ -69,10 +69,8 @@ class IndeedJobsManager(models.Manager):
         return super().get_queryset().filter(city__icontains='Rajkot')
 
     def get_queryset_bharuch(self):
-        return super().get_queryset().filter(city__icontains='Bharuch')
+        return super().get_queryset().filter( Q(city__icontains='Bharuch') | Q(city__icontains='Ankleshwar'))
 
-    def get_queryset_ankleshwar(self):
-        return super().get_queryset().filter(city__icontains='Ankleshwar')
 
     def get_queryset_vapi(self):
         return super().get_queryset().filter(city__icontains='Vapi')

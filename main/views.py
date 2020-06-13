@@ -36,6 +36,8 @@ class HomeListView(FilterView):
             'jobs_by_graphic_digital': IndeedJobs.categories_objects.get_queryset_graphic_digital().all(),
             'jobs_by_bpo_ites': IndeedJobs.categories_objects.get_queryset_bpo_ites().all(),
             'jobs_by_engg': IndeedJobs.categories_objects.get_queryset_engineering_manufacturing().all(),
+            'jobs_vapi': IndeedJobs.job_objects.get_queryset_vapi().all(),
+            'jobs_rajkot': IndeedJobs.job_objects.get_queryset_rajkot().all(),
 
         }
         )
@@ -122,6 +124,8 @@ class JobsByLocation(ListView):
             'jobs_vadodara': IndeedJobs.job_objects.get_queryset_vadodara().all(),
             'jobs_bharuch': IndeedJobs.job_objects.get_queryset_bharuch().all(),
             'jobs_surat': IndeedJobs.job_objects.get_queryset_surat().all(),
+            'jobs_vapi': IndeedJobs.job_objects.get_queryset_vapi().all(),
+            'jobs_rajkot': IndeedJobs.job_objects.get_queryset_rajkot().all(),
         })
 
         return context
@@ -289,4 +293,32 @@ class JobsByEngineering(ListView):
         context.update({
             'jobs_by_engg': IndeedJobs.categories_objects.get_queryset_engineering_manufacturing().all(),
         })
+        return context
+
+
+class JobsByRajkot(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_location/jobs-by-location-rajkot.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByRajkot, self).get_context_data()
+        context.update({
+            'jobs_rajkot': IndeedJobs.job_objects.get_queryset_rajkot().all(),
+        })
+
+        return context
+
+
+class JobsByVapi(ListView):
+    model = IndeedJobs
+    template_name = 'jobs_by_location/jobs-by-location-vapi.html'
+    paginate_by = 20
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobsByVapi, self).get_context_data()
+        context.update({
+            'jobs_vapi': IndeedJobs.job_objects.get_queryset_vapi().all(),
+        })
+
         return context

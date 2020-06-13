@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from main.views import IndexView, IndexDetailView, HomeListView, TestListView, JobsByLocation, JobsByAhm, \
     JobsByVadodara, JobsByBharuch, JobsBySurat, JobsByCategories, JobsBySales, JobsByBackOffice, JobsByPurchaseStore, \
-    JobsByAccountFinance, JobsBySoftwareHardware, JobsByGraphicDigital, JobsByBPOITES, JobsByEngineering
+    JobsByAccountFinance, JobsBySoftwareHardware, JobsByGraphicDigital, JobsByBPOITES, JobsByEngineering, JobsByRajkot,JobsByVapi
 from jobopening.views import JobOpeningView, JobOpeningDetailView
 
 urlpatterns = [
@@ -35,6 +35,9 @@ urlpatterns = [
                   path('jobs-in-vadodara', JobsByVadodara.as_view(), name='jobs-in-vadodara'),
                   path('jobs-in-bharuch', JobsByBharuch.as_view(), name='jobs-in-bharuch'),
                   path('jobs-in-surat', JobsBySurat.as_view(), name='jobs-in-surat'),
+                  path('jobs-in-rajkot', JobsByRajkot.as_view(), name='jobs-in-rajkot'),
+                  path('jobs-in-vapi', JobsByVapi.as_view(), name='jobs-in-vapi'),
+
 
                   # Categories
 
